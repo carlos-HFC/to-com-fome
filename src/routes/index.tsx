@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Confirmation, UserIdentification, Welcome } from "../pages";
+import { Confirmation, Detail, Points, UserIdentification, Welcome } from "../pages";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -12,6 +12,8 @@ export function Routes() {
         <Screen name="Welcome" component={Welcome} />
         <Screen name="UserIdentification" component={UserIdentification} />
         <Screen name="Confirmation" component={Confirmation} />
+        <Screen name="Points" component={Points} />
+        <Screen name="Detail" component={Detail} />
       </Navigator>
     </NavigationContainer>
   );
