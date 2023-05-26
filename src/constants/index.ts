@@ -1,0 +1,1 @@
+export const USER = "@to-com-fome:user"
