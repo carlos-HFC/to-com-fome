@@ -4,10 +4,9 @@ import { useState } from "react";
 import { Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 
 import { Button } from "../../components";
-import { USER } from "../../constants";
+import { COLORS, USER } from "../../constants";
 
 import { styles } from './style';
-import { colors } from "../../styles";
 
 export function UserIdentification() {
   const navigation = useNavigation();
@@ -23,11 +22,11 @@ export function UserIdentification() {
       await AsyncStorage.setItem(USER, name);
 
       navigation.navigate("Confirmation" as never, {
-        title: "Prontinho",
+        title: `Prontinho, ${name}`,
         subtitle: "Lorem ipsum dolor \n sit amet consectetur",
         buttonTitle: "Começar",
         icon: "smile",
-        nextScreen: ""
+        nextScreen: "Points"
       } as never);
     } catch (error) {
       Alert.alert("Não foi possível salvar o seu nome 😥");
@@ -63,7 +62,7 @@ export function UserIdentification() {
                 </Text>
               </View>
 
-              <TextInput placeholder="Digite um nome" style={[styles.input, (isFocused || isFilled) && { borderColor: colors.green }]}
+              <TextInput placeholder="Digite o seu nome" style={[styles.input, (isFocused || isFilled) && { borderColor: COLORS.green }]}
                 value={name} onChangeText={handleChange}
                 onBlur={handleBlur} onFocus={handleFocus}
               />

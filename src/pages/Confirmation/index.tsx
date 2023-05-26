@@ -37,7 +37,7 @@ export function Confirmation() {
           {subtitle}
         </Text>
         <View style={styles.footer}>
-          <Button title={buttonTitle} />
+          <Button title={buttonTitle} onPress={() => navigation.navigate(nextScreen as never)} />
         </View>
       </View>
     </View>
