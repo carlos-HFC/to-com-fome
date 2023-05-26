@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
-import { colors } from "../../styles";
+import { COLORS } from "../../constants";
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20
   },
   title: {
-    // color: colors.heading,
+    // color: COLORS.heading,
     // fontFamily: fonts.heading,
     fontSize: 32,
     lineHeight: 34,
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     textAlign: "center"
   },
   subtitle: {
-    // color: colors.heading,
+    // color: COLORS.heading,
     // fontFamily: fonts.text,
     fontSize: 18,
     paddingHorizontal: 20,
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: colors.green,
+    backgroundColor: COLORS.green,
     borderRadius: 16,
     height: 56,
     justifyContent: "center",
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     height: Dimensions.get("window").width * 0.7
   },
   buttonIcon: {
-    color: colors.white,
+    color: COLORS.white,
     fontSize: 24
   }
 });
