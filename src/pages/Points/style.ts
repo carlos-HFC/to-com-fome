@@ -1,7 +1,7 @@
 import Constants from "expo-constants";
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
-import { COLORS } from "../../constants";
+import { COLORS, FONTS, SHADOW } from "../../constants";
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,42 +10,31 @@ export const styles = StyleSheet.create({
     paddingTop: 10 + Constants.statusBarHeight
   },
   title: {
-    fontSize: 20,
-    marginTop: 24,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    marginBottom: 16
   },
   description: {
-    color: '#222',
+    color: COLORS.red,
     fontSize: 16,
-    marginTop: 4,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    fontFamily: FONTS.Montserrat
   },
   mapContainer: {
     flex: 1,
     width: '100%',
-    borderRadius: 10,
+    borderRadius: 24,
     overflow: 'hidden',
     marginTop: 16,
+    marginBottom: 32,
+    minHeight: Dimensions.get("window").height / 1.5,
+    // ...SHADOW
   },
   map: {
     width: '100%',
-    height: '100%',
-  },
-  mapMarker: {
-    width: 90,
-    height: 90,
-  },
-  mapMarkerContainer: {
-    width: 90,
-    height: 90,
-    backgroundColor: COLORS.green,
-    flexDirection: 'column',
-    borderRadius: 8,
-    gap: 4,
-    alignItems: 'center',
-    justifyContent: "center"
-  },
-  mapMarkerTitle: {
-    color: COLORS.white,
-    fontSize: 13,
-    textAlign: "center"
+    height: "100%",
   },
 });

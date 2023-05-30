@@ -1,17 +1,19 @@
-import { Feather } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import * as Location from 'expo-location';
 import { useEffect, useState } from "react";
-import { Alert, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { Alert, ImageBackground, SafeAreaView, Text, View } from 'react-native';
+import MapView from 'react-native-maps';
 
-import { COLORS, POINTS } from "../../constants";
+import { MapMarker, TitleImage } from "../../components";
+import { COLORS, POINTS, SHADOW } from "../../constants";
 
 import { styles } from './style';
 
 export function Points() {
   const navigation = useNavigation();
 
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
 
   useEffect(() => {
@@ -37,31 +39,33 @@ export function Points() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Feather name="arrow-left" size={20} color={COLORS.green} />
-        </TouchableOpacity>
+      <ImageBackground style={styles.container} source={require("../../assets/background.png")}>
+        <TitleImage />
 
-        <Text style={styles.title}>Bem-vindo</Text>
-        <Text style={styles.description}>Encontre no mapa um voluntário</Text>
+        <View style={styles.title}>
+          <FontAwesome5 name="map-marker-alt" color={COLORS.red} size={25} />
+          <Text style={styles.description}>PONTOS DE ALIMENTO</Text>
+        </View>
 
-        <View style={styles.mapContainer}>
+        <View style={[styles.mapContainer, isMapLoaded && { ...SHADOW }]}>
           {initialPosition[0] !== 0 && (
-            <MapView style={styles.map} initialRegion={{ latitude: initialPosition[0], longitude: initialPosition[1], latitudeDelta: 0.014, longitudeDelta: 0.014 }}>
+            <MapView onMapLoaded={() => setIsMapLoaded(true)} loadingEnabled style={styles.map} initialRegion={{ latitude: initialPosition[0], longitude: initialPosition[1], latitudeDelta: 0.014, longitudeDelta: 0.014 }}>
+              <MapMarker
+                coordinate={{ latitude: initialPosition[0], longitude: initialPosition[1] }}
+                title="Você está aqui"
+                color="greenDark"
+              />
               {POINTS.map((point, i) => (
-                <Marker key={String(i)} onPress={() => goToDetail(point)} style={styles.mapMarker} coordinate={{ latitude: point.latitude, longitude: point.longitude }}>
-                  <View style={styles.mapMarkerContainer}>
-                    <Feather name="map-pin" size={32} color={COLORS.white} />
-                    <Text style={styles.mapMarkerTitle}>
-                      {point.title}
-                    </Text>
-                  </View>
-                </Marker>
+                <MapMarker key={String(i)} onPress={() => goToDetail(point)}
+                  coordinate={{ latitude: point.latitude, longitude: point.longitude }}
+                  title={point.title}
+                  color="red"
+                />
               ))}
             </MapView>
           )}
         </View>
-      </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 }
