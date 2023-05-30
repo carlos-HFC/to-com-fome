@@ -1,6 +1,7 @@
 import Constants from "expo-constants";
 import { StyleSheet } from 'react-native';
-import { COLORS } from "../../constants";
+
+import { COLORS, FONTS, SHADOW } from "../../constants";
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,22 +9,35 @@ export const styles = StyleSheet.create({
     padding: 32,
     paddingTop: 10 + Constants.statusBarHeight
   },
-  pointName: {
-    color: "#222",
-    fontSize: 28,
-    marginTop: 24
+  point: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+    borderRadius: 24,
+    alignItems: "center",
+    paddingVertical: 24,
+    paddingHorizontal: 32,
+    gap: 24,
+    marginTop: 42,
+    ...SHADOW
   },
-  address: {
-    marginTop: 32,
+  pointContainer: {
+    gap: 4
   },
-  addressTitle: {
-    color: '#222',
-    fontSize: 16,
+  pointTitle: {
+    color: COLORS.greenDark,
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    fontSize: 18,
+    textAlign: "center",
+    fontFamily: FONTS.Montserrat
   },
-  addressContent: {
-    lineHeight: 24,
-    marginTop: 8,
-    color: '#6C6C80'
+  pointContent: {
+    color: COLORS.red,
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    fontSize: 18,
+    textAlign: "center",
+    fontFamily: FONTS.Montserrat
   },
   footer: {
     borderTopWidth: StyleSheet.hairlineWidth,
@@ -34,7 +48,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   button: {
-    width: '48%',
+    width: '100%',
     backgroundColor: COLORS.green,
     borderRadius: 10,
     height: 50,
@@ -46,5 +60,6 @@ export const styles = StyleSheet.create({
     marginLeft: 8,
     color: COLORS.white,
     fontSize: 16,
+    fontFamily: FONTS.Montserrat
   },
 });
