@@ -6,7 +6,8 @@ import { Alert, ImageBackground, SafeAreaView, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
 
 import { MapMarker, TitleImage } from "../../components";
-import { COLORS, POINTS, SHADOW } from "../../constants";
+import { COLORS, SHADOW } from "../../constants";
+import { api } from "../../services/api";
 
 import { styles } from './style';
 
@@ -15,6 +16,15 @@ export function Points() {
 
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
+  const [points, setPoints] = useState<Point[]>([]);
+
+  useEffect(() => {
+    api.get("/user.php", {
+      params: {
+        roleId: 1
+      }
+    }).then(response => setPoints(response.data));
+  }, []);
 
   useEffect(() => {
     async function loadPosition() {
@@ -55,10 +65,10 @@ export function Points() {
                 title="Você está aqui"
                 color="greenDark"
               />
-              {POINTS.map((point, i) => (
+              {points.map((point, i) => (
                 <MapMarker key={String(i)} onPress={() => goToDetail(point)}
-                  coordinate={{ latitude: point.latitude, longitude: point.longitude }}
-                  title={point.title}
+                  coordinate={{ latitude: Number(point.latitude), longitude: Number(point.longitude) }}
+                  title={point.name}
                   color="red"
                 />
               ))}
