@@ -11,7 +11,7 @@ export const COLORS = {
 
 export const POINTS: Point[] = [
   {
-    title: "Cesta da Economia",
+    name: "Cesta da Economia",
     email: "cestadaeconomia@email.com",
     phone: "11964096868",
     cep: "08280-190",
@@ -23,7 +23,7 @@ export const POINTS: Point[] = [
     longitude: -46.4780569
   },
   {
-    title: "Caio",
+    name: "Caio",
     email: "caio@email.com",
     phone: "11959836637",
     cep: "08295-005",
@@ -35,7 +35,7 @@ export const POINTS: Point[] = [
     longitude: -46.4741651
   },
   {
-    title: "Gustavo",
+    name: "Gustavo",
     email: "gustavo@email.com",
     phone: "11942659313",
     cep: "09390-040",
@@ -47,7 +47,7 @@ export const POINTS: Point[] = [
     longitude: -46.4632126
   },
   {
-    title: "Eder",
+    name: "Eder",
     email: "eder@email.com",
     phone: "11957850623",
     cep: "04263-000",
@@ -59,7 +59,7 @@ export const POINTS: Point[] = [
     longitude: -46.6131051
   },
   {
-    title: "Fernando",
+    name: "Fernando",
     email: "fernando@email.com",
     phone: "11995480607",
     cep: "09600-000",

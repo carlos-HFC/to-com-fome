@@ -1,5 +1,5 @@
 type Point = {
-  title: string;
+  name: string;
   email: string;
   phone: string;
   cep: string;

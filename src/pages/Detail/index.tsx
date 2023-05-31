@@ -40,7 +40,7 @@ export function Detail() {
             <View style={styles.pointContainer}>
               <Text style={styles.pointTitle}>Nome</Text>
               <Text style={styles.pointContent}>
-                {params.title}
+                {params.name}
               </Text>
             </View>
 
