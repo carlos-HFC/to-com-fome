@@ -21,7 +21,7 @@ export function Points() {
   useEffect(() => {
     api.get("/user.php", {
       params: {
-        roleId: 1
+        roleId: 3
       }
     }).then(response => setPoints(response.data));
   }, []);
